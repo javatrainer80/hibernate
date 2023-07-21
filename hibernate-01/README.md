@@ -83,8 +83,8 @@ Hibernate First Example
          <generator class="identity"/>
       </id>
       
-      <property name = "name" column = "" type = "string"/>
-      <property name = "age" column = "" type = "int"/>
+      <property name = "customerName" column = "" type = "string"/>
+      <property name = "" column = "" type = "int"/>
       
    </class>
 </hibernate-mapping>
