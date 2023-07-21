@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<!-- 
+Table: customer
+Columns:
+CUSTOMER_ID int PK 
+CUSTOMER_NAME varchar(45) 
+CUSTOMER_AGE int 
+CUSTOMER_ADDRESS varchar(200)
+-->
+<hibernate-mapping>
+   <class name = "com.tech2java.entity.Customer" table = "customer">
+      
+      <id name = "customerId" type = "int" column = "CUSTOMER_ID">
+        <!-- <generator class="identity"/>-->
+      </id>
+      <property name = "customerName" column = "CUSTOMER_NAME" type = "string"/>
+      <property name = "customerAge" column = "CUSTOMER_AGE" type = "int"/>
+      <property name = "customerAddress" column = "CUSTOMER_ADDRESS" type = "string"/>
+      
+   </class>
+</hibernate-mapping>
