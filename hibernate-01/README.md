@@ -60,8 +60,8 @@ Hibernate First Example
 		<property name="format_sql">true</property>
 	
 		<!-- Create/Update/Validate/Create-drop database -->
-		<property name="hibernate.hbm2ddl.auto">update</property>
-		<!-- Annotated entity classes <mapping class="com.company.hb_proj.Employee"/> -->
+		<!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+		<!-- Annotated entity classes <mapping class="com.tech2java.Customer"/> -->
 		<mapping resource="" />
 	</session-factory>
 </hibernate-configuration>
