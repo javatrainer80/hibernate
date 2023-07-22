@@ -1,7 +1,7 @@
 # Hibernate CRUD Operations
 
-- `save` (Returns newly inserted id & deprecated in 6.0 version) 
-- `persist` ( It's return type is void)
+- `save` (Returns newly inserted id & deprecated in 6.0 version & not in JPA specification) 
+- `persist` ( It's return type is void & it is in JPA specification
 - `get` (it return null if there is not object exist in DB else return existing object)
   it returns complete object. 
 - `load` (Deprecated in 6.0. 
@@ -14,6 +14,7 @@
 - `update` (Deprecated in 6.0)
 - `merge` (used in scenario where we loaded the same object again and again)
 - `saveOrUpdate` (@deprecated use {@link #merge(String, Object)} or {@link #persist(Object)})
+- `evict` (explicitly detach the object from session)
 - `openSession` vs `currentSesion`
 
 # Object states (life cycle of POJO)
@@ -34,7 +35,8 @@ customer.setCustomerAddress("SEC");
 -- Persistent State start
 Transaction tx=session.beginTransaction();
 session.persist(customer);
-tx.commit();
+customer.setCustomerAge(100)//stores in cache
+tx.commit();//flushes everything into DB
 -- Persistent State end
 
 session.close();
@@ -43,6 +45,22 @@ sf.close()
 
 ```
 
+# evict() - detaching object from session explicitly
 
+```java
+Customer c=new Customer();
+//set data
+
+session.persist(c);//c is associated with session
+
+c.setCustomerAge(100);
+session.evict(c);//detaching object from session
+
+c.setCustomerAge(60);//customer object is not in cache - it is treated as transient object
+
+
+//session.save(c);//new entry will be created
+tx.commit();//no changes to DB as no customer object in cache 
+```
 
 
