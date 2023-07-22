@@ -49,3 +49,45 @@ create table EMPLOYEE (
 ```
 
 - //session.persist(employee.getPassport());//persist passport (or use cascade options)
+
+- OneToOne relationship always EAGER FETCH.
+  Passport details will be fetched while fetching employee.
+  
+```SQL
+
+    select
+        e1_0.EMP_ID,
+        e1_0.EMP_NAME,
+        p1_0.PID,
+        p1_0.PASSPORT_NUMBER 
+    from
+        EMPLOYEE e1_0 
+    left join
+        PASSPORT p1_0 
+            on p1_0.PID=e1_0.pid 
+    where
+        e1_0.EMP_ID=?
+```
+#  
+- in jpa, PersistenceContenxt = Session
+- if we add @Trasnactional on method- it is applicable for entire method.
+- if we don't add @Transactional- then each method call open transaction & close as soon as method call completes.
+
+```java
+ @Transactional
+  perform(){
+  
+    get()
+    save()
+    update()
+    
+  }
+```
+- JPA (EntityManager & PersistanceContext ,Transactional)
+- Hibernate (SessionFactory & Session)
+
+# Bidirectional
+- Add mapped by non-owning side of relationship so OneToOne relationship owned by Employee now else duplicate data in   both tables
+
+- if we add mappedBy="passport" , then in PASSPORT table student_id column will not be created.
+  

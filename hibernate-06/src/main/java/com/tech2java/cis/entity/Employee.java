@@ -5,6 +5,7 @@ import java.io.Serializable;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,7 +20,7 @@ import jakarta.persistence.Table;
  */
 @Entity
 @Table(name = "EMPLOYEE")
-public class Employee implements Serializable{
+public class Employee implements Serializable {
 
 	private static final long serialVersionUID = -4450783499976750528L;
 
@@ -27,12 +28,12 @@ public class Employee implements Serializable{
 	@Column(name = "EMP_ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer empId;
-	
+
 	@Column(name = "EMP_NAME")
 	private String empName;
-	
-	@OneToOne(targetEntity = Passport.class,cascade = CascadeType.ALL)
-	@JoinColumn(name = "pid",referencedColumnName = "PID")
+	// by default - EAGER
+	@OneToOne(targetEntity = Passport.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "pid", referencedColumnName = "PID")
 	private Passport passport;
 
 	public Integer getEmpId() {
@@ -58,6 +59,10 @@ public class Employee implements Serializable{
 	public void setPassport(Passport passport) {
 		this.passport = passport;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", empName=" + empName + "]";
+	}
+
 }

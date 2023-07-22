@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.tech2java.cis.entity.Employee;
+import com.tech2java.cis.entity.Passport;
 import com.tech2java.cis.util.HibernateUtil;
 
 public class EmployeeDao {
@@ -27,23 +28,32 @@ public class EmployeeDao {
 	}
 	
 	
-	public Employee getCustomer(Integer employeeId) {
+	public Employee getEmployeeWithPassport(Integer employeeId) {
 		Session session=sessionFactory.openSession();
-		System.out.println("Before calling load method.");
-		Employee customer=session.get(Employee.class, employeeId);
-		System.out.println("After calling load method.");
-		System.out.println("Employee object::"+customer);
-		return customer;
+		System.out.println("Before calling get method.");
+		Employee employee=session.get(Employee.class, employeeId);
+		System.out.println("After calling get method.");
+		//System.out.println("Employee object::"+employee);
+		return employee;
 	}
 	
-	public Employee removeCustomer(Integer employeeId) {
+	public Passport getPassportWithemployee(Integer passportId) {
+		Session session=sessionFactory.openSession();
+		System.out.println("Before calling get method.");
+		Passport passport=session.get(Passport.class, passportId);
+		System.out.println("After calling get method.");
+		//System.out.println("Employee object::"+employee);
+		return passport;
+	}
+	
+	public void removeEmployee(Integer employeeId) {
 		Session session=sessionFactory.openSession();
 		Transaction tx=session.beginTransaction();
-		Employee customer=session.get(Employee.class, employeeId);
-		session.remove(customer);
+		Employee employee=session.get(Employee.class, employeeId);
+		session.remove(employee);
 		tx.commit();
 		System.out.println("Employee object deleted::"+employeeId);
-		return customer;
+		
 	}
 	
 	
