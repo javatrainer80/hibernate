@@ -12,4 +12,4 @@
 - `create-drop:` create the schema as in create above, but also drop the schema at the end of the session. This is great in early development or for testing.
 - (console log: SessionFactory shut-down' Hibernate: drop table if exists customer)
  
-`Don't use above options in production`    
+`Don't use above options in production` expect validate   
