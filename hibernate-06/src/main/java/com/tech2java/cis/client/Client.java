@@ -13,10 +13,10 @@ public class Client {
 			EmployeeDao employeeDao=new EmployeeDao();
 			
 			Passport passport=new Passport();
-			passport.setPassportNumber("K09543");
+			passport.setPassportNumber("K09333");
 			
 			Employee employee=new Employee();
-			employee.setEmpName("Suresh");
+			employee.setEmpName("Naveen");
 			
 			employee.setPassport(passport);
 			

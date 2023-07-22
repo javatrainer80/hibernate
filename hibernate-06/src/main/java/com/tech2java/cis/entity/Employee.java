@@ -2,6 +2,7 @@ package com.tech2java.cis.entity;
 
 import java.io.Serializable;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Employee implements Serializable{
 	@Column(name = "EMP_NAME")
 	private String empName;
 	
-	@OneToOne(targetEntity = Passport.class)
+	@OneToOne(targetEntity = Passport.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "pid",referencedColumnName = "PID")
 	private Passport passport;
 

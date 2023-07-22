@@ -47,3 +47,5 @@ create table EMPLOYEE (
        foreign key (pid) 
        references PASSPORT (PID)    
 ```
+
+- //session.persist(employee.getPassport());//persist passport (or use cascade options)

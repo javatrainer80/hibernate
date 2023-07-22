@@ -19,7 +19,7 @@ public class EmployeeDao {
 		Session session=sessionFactory.openSession();
 		Transaction tx=session.beginTransaction();
 		
-		session.persist(employee.getPassport());//persist passport (or use cascade options)
+		//session.persist(employee.getPassport());//persist passport (or use cascade options)
 		session.persist(employee);//persist employee
 		tx.commit();
 		
