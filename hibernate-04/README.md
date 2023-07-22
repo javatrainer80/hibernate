@@ -12,8 +12,8 @@
 - `delete` (Deprecated in 6.0)
 - `remove` use it for remove object
 - `update` (Deprecated in 6.0)
-- `merge`
-- `saveOrUpdate`
+- `merge` (used in scenario where we loaded the same object again and again)
+- `saveOrUpdate` (@deprecated use {@link #merge(String, Object)} or {@link #persist(Object)})
 - `openSession` vs `currentSesion`
 
 # Object states (life cycle of POJO)

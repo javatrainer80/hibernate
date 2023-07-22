@@ -60,7 +60,6 @@ public class CustomerDao {
 		Session session=sessionFactory.openSession();
 		Transaction tx=session.beginTransaction();
 		Customer customer=session.get(Customer.class, customerId);
-		
 		session.delete(customer);
 		tx.commit();
 		System.out.println("customer object deleted::"+customerId);
@@ -93,6 +92,24 @@ public class CustomerDao {
 		session.update(customer);
 		tx.commit();
 		System.out.println("Customer object updated successfully....");
+	}
+	
+	
+	public void mergeCustomer(Integer customerId) {
+		Session session1=sessionFactory.openSession();
+		Customer customer1=session1.get(Customer.class, customerId);//1
+		session1.close();//customer object is not associated with session(detached state)
+		customer1.setCustomerAddress("DELHI");//updating detached object 
+		
+		Session session2=sessionFactory.openSession();
+		//load same object again from DB.
+		Customer customer2=session2.get(Customer.class, customerId);//1
+		Transaction tx=session2.beginTransaction();
+		//customer1 changes will merge into customer2
+		session2.merge(customer1);
+		
+		tx.commit();//checks if there is any difference between cached object and db object- if yes, it will call update
+		System.out.println("customer object merged for ID::"+customerId);
 	}
 	
 	

@@ -29,7 +29,9 @@ public class Client {
 			updateCustomer.setCustomerName("Rahul");
 			updateCustomer.setCustomerAge(80);
 			updateCustomer.setCustomerAddress("SEC");
-			customerDao.updateCustomer(updateCustomer);
+			//customerDao.updateCustomer(updateCustomer);
+			
+			customerDao.mergeCustomer(1);
 
 		} catch (Exception ex) {
 			System.err.println("Exception occured...." + ex.toString());
