@@ -1,6 +1,7 @@
 # One-to-Many
 Note:Keep hbm2ddl.auto to create then run the program-
      copy the generated the queries and use them
+- OneToMany - FETCH strategy by default LAZY     
 # entities
 - Department 1...n employees
 
