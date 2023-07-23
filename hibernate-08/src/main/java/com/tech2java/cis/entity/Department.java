@@ -1,6 +1,7 @@
 package com.tech2java.cis.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import jakarta.persistence.CascadeType;
@@ -28,9 +29,12 @@ public class Department implements Serializable {
 	@Column(name = "EMP_NAME")
 	private String deptName;
 	
-	@OneToMany(targetEntity = Employee.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "dept_id",referencedColumnName = "dept_id")
-	private Set<Employee> employees;
+	@OneToMany(targetEntity = Employee.class,
+			   cascade = CascadeType.ALL,
+			   fetch = FetchType.LAZY,
+			   mappedBy = "department")//need add in opposite of owning entity. Employee is owning entity with dept_id
+	//@JoinColumn(name = "dept_id", referencedColumnName = "dept_id")
+	private Set<Employee> employees=new HashSet<>();
 
 	public Integer getDeptId() {
 		return deptId;

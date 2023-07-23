@@ -28,8 +28,11 @@ public class Employee implements Serializable {
 	@Column(name = "EMP_NAME")
 	private String empName;
 	
-	@ManyToOne(targetEntity = Department.class,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name="dept_id",referencedColumnName = "dept_id")
+	@ManyToOne(targetEntity = Department.class,
+			   cascade = CascadeType.ALL, 
+			   fetch = FetchType.LAZY)
+	@JoinColumn(name="dept_id",
+	            referencedColumnName = "dept_id")
 	private Department department;
 	
 
